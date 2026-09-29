@@ -1,3 +1,7 @@
+let numbersOperation;
+let number1;
+let number2;
+
 function add(a, b) {
   return a + b;
 }
@@ -12,4 +16,8 @@ function multiply(a, b) {
 
 function divide(a, b) {
   return a / b;
+}
+
+function operate(operation, a, b) {
+  return operation(a, b);
 }

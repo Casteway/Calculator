@@ -12,7 +12,7 @@ body{
     height: 500px;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 2em;
     align-items: center;
     justify-content: center;
     background-color: burlywood;
@@ -24,7 +24,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font:  50px bold;
+    font-size: 50px;
+    font-weight: bold;
     color: white;
     background-color: gray;
 }
@@ -35,11 +36,11 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
-    width: 220px;
+    width: 350px;
     height: 220px;
 }
 
 button{
-    width: 50px;
+    width: 83px;
     height: 50px;
 }

@@ -1,4 +1,4 @@
-let numbersOperation;
+let numbersOperation = "";
 let number1 = "";
 let number2 = "";
 let operatorClicked = false;
@@ -23,18 +23,34 @@ function operate(operation, a, b) {
   return operation(a, b);
 }
 
-const buttons = document.querySelectorAll(".digitButtons");
+const digitButtons = document.querySelectorAll(".digitButtons");
 const display = document.querySelector(".display");
 const clearButton = document.querySelector(".clearButton");
+const operatorButtons = document.querySelectorAll(".operatorButtons");
+const sumButton = document.querySelector(".sumButton");
 
-buttons.forEach((button) => {
+digitButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     display.textContent += event.target.textContent;
-    number1 += event.target.textContent;
-    console.log(number1);
+    if (operatorClicked === true) {
+      number2 += event.target.textContent;
+    } else {
+      number1 += event.target.textContent;
+    }
+  });
+});
+
+operatorButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    operatorClicked = true;
+    numbersOperation = event.target.textContent;
   });
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = " ";
+});
+
+sumButton.addEventListener("click", () => {
+  console.log("Sum has been clicked");
 });

@@ -4,6 +4,7 @@ let number2 = "";
 let operation = "";
 let operatorClicked = false;
 let result = "";
+let resultShown = false;
 
 function add(a, b) {
   return a + b;
@@ -33,6 +34,10 @@ const sumButton = document.querySelector(".sumButton");
 
 digitButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
+    if (resultShown === true) {
+      display.textContent = "";
+      resultShown = false;
+    }
     display.textContent += event.target.textContent;
     if (operatorClicked === true) {
       number2 += event.target.textContent;
@@ -44,6 +49,7 @@ digitButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
+    display.textContent = "";
     operatorClicked = true;
     numbersOperation = event.target.textContent;
     switch (numbersOperation) {
@@ -67,11 +73,24 @@ operatorButtons.forEach((button) => {
 
 clearButton.addEventListener("click", () => {
   display.textContent = " ";
-  result = 0;
+  numbersOperation = "";
+  number1 = "";
+  number2 = "";
+  operation = "";
+  operatorClicked = false;
+  result = "";
+  resultShown = false;
 });
 
 sumButton.addEventListener("click", () => {
   console.log("Sum has been clicked");
-  result = operate(operation, number1, number2);
+  result = operate(operation, Number(number1), Number(number2));
   display.textContent = result;
+  numbersOperation = "";
+  number1 = "";
+  number2 = "";
+  operation = "";
+  operatorClicked = false;
+  result = "";
+  resultShown = true;
 });

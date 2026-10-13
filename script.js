@@ -20,10 +20,15 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if (Number(a) === 0 || Number(b) === 0) {
-    return alert("No divide by 0");
+  if (Number(b) === 0) {
+    number1 = "";
+    number2 = "";
+    operation = "";
+    operatorClicked = false;
+    return (display.textContent = "No divide by 0");
+  } else {
+    return Number(a) / Number(b);
   }
-  return Number(a) / Number(b);
 }
 
 function operate(operation, a, b) {

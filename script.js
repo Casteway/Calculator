@@ -20,6 +20,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+  let divideResult = 0;
   if (Number(b) === 0) {
     number1 = "";
     number2 = "";
@@ -28,7 +29,8 @@ function divide(a, b) {
     resultShown = true;
     return (display.textContent = "No divide by 0");
   } else {
-    return Number(a) / Number(b);
+    divideResult = Number(a) / Number(b);
+    return Math.round(divideResult * 100) / 100;
   }
 }
 

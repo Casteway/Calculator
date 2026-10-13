@@ -5,6 +5,7 @@ let operation = "";
 let operatorClicked = false;
 let result = "";
 let resultShown = false;
+let tempResult = "";
 
 function add(a, b) {
   return a + b;
@@ -52,6 +53,15 @@ operatorButtons.forEach((button) => {
     display.textContent = "";
     operatorClicked = true;
     numbersOperation = event.target.textContent;
+    if (number1 != "" && number2 != "") {
+      tempResult = operate(operation, number1, number2);
+      number1 = tempResult;
+      number2 = "";
+      operation = "";
+      numbersOperation = "";
+      operatorClicked = false;
+      display.textContent = number1;
+    }
     switch (numbersOperation) {
       case "+":
         operation = add;
@@ -83,14 +93,17 @@ clearButton.addEventListener("click", () => {
 });
 
 sumButton.addEventListener("click", () => {
-  console.log("Sum has been clicked");
-  result = operate(operation, Number(number1), Number(number2));
-  display.textContent = result;
-  numbersOperation = "";
-  number1 = "";
-  number2 = "";
-  operation = "";
-  operatorClicked = false;
-  result = "";
-  resultShown = true;
+  if (number1 != "" && number2 != "" && operation != "") {
+    console.log("Sum has been clicked");
+    result = operate(operation, Number(number1), Number(number2));
+    display.textContent = result;
+    numbersOperation = "";
+    number1 = "";
+    number2 = "";
+    operation = "";
+    operatorClicked = false;
+    result = "";
+    resultShown = true;
+    tempResult = "";
+  }
 });

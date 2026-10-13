@@ -8,19 +8,19 @@ let resultShown = false;
 let tempResult = "";
 
 function add(a, b) {
-  return a + b;
+  return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
-  return a - b;
+  return Number(a) - Number(b);
 }
 
 function multiply(a, b) {
-  return a * b;
+  return Number(a) * Number(b);
 }
 
 function divide(a, b) {
-  return a / b;
+  return Number(a) / Number(b);
 }
 
 function operate(operation, a, b) {
@@ -53,27 +53,30 @@ operatorButtons.forEach((button) => {
     display.textContent = "";
     operatorClicked = true;
     numbersOperation = event.target.textContent;
-    if (number1 != "" && number2 != "") {
-      tempResult = operate(operation, number1, number2);
+    if (number1 !== "" && number2 !== "") {
+      tempResult = operate(operation, Number(number1), Number(number2));
       number1 = tempResult;
       number2 = "";
       operation = "";
-      numbersOperation = "";
-      operatorClicked = false;
-      display.textContent = number1;
+      resultShown = true;
+      display.textContent = Number(number1);
     }
     switch (numbersOperation) {
       case "+":
         operation = add;
+        numbersOperation = "";
         break;
       case "-":
         operation = subtract;
+        numbersOperation = "";
         break;
       case "X":
         operation = multiply;
+        numbersOperation = "";
         break;
       case "/":
         operation = divide;
+        numbersOperation = "";
         break;
       default:
         break;
@@ -93,7 +96,7 @@ clearButton.addEventListener("click", () => {
 });
 
 sumButton.addEventListener("click", () => {
-  if (number1 != "" && number2 != "" && operation != "") {
+  if (number1 !== "" && number2 !== "" && operation !== "") {
     console.log("Sum has been clicked");
     result = operate(operation, Number(number1), Number(number2));
     display.textContent = result;

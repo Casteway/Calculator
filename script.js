@@ -25,6 +25,7 @@ function divide(a, b) {
     number2 = "";
     operation = "";
     operatorClicked = false;
+    resultShown = true;
     return (display.textContent = "No divide by 0");
   } else {
     return Number(a) / Number(b);
@@ -62,6 +63,14 @@ operatorButtons.forEach((button) => {
     operatorClicked = true;
     numbersOperation = event.target.textContent;
     if (number1 !== "" && number2 !== "") {
+      if (operation === divide && Number(number2) === 0) {
+        number1 = "";
+        number2 = "";
+        operation = "";
+        operatorClicked = false;
+        resultShown = true;
+        return (display.textContent = "No divide by 0");
+      }
       tempResult = operate(operation, Number(number1), Number(number2));
       number1 = tempResult;
       number2 = "";
